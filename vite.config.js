@@ -7,7 +7,7 @@ import { resolve } from 'path';
 const certsExist = fs.existsSync('./certs/key.pem') && fs.existsSync('./certs/cert.pem');
 
 export default defineConfig({
-  base: '/ai-blog/',
+  base: '/',
   plugins: [
     react(),
     // Copy index.html to 404.html for GitHub Pages SPA routing

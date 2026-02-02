@@ -264,7 +264,7 @@ Feel free to:
 
 ## 📝 License
 
-This demonstration is part of the ai-blog project.
+This demonstration is part of the jonesopolis-github-io project.
 
 ---
 
