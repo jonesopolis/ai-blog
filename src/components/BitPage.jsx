@@ -28,7 +28,7 @@ export default function BitPage() {
         title="Meet Bit | Please Recompile"
         description="Bit is a friendly robot mascot with 16 emotions and poses. Hover to see each animation."
       />
-      <main>
+      <main className="bit-page">
         <div className="container" style={{ paddingTop: '40px', paddingBottom: '80px' }}>
           <div style={{ marginBottom: '32px', textAlign: 'center' }}>
             <div style={{ marginBottom: '16px' }}>

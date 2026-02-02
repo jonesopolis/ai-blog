@@ -106,6 +106,7 @@ header.header--scrolled {
     letter-spacing: 0.5px;
     transition: color 0.2s ease;
     position: relative;
+    text-transform: lowercase;
 }
 
 .nav-link::after {
@@ -226,7 +227,7 @@ header.header--scrolled {
     font-size: 11px;
     color: var(--text-secondary);
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     margin-bottom: 16px;
     padding: 6px 12px;
     background-color: var(--accent-subtle);
@@ -588,6 +589,7 @@ header.header--scrolled {
     font-size: 13px;
     margin-bottom: 32px;
     transition: color 0.2s ease;
+    text-transform: lowercase;
 }
 
 .back-link:hover {
@@ -743,7 +745,7 @@ html.theme-transitioning .post-detail-header * {
 
 .related-posts h2 {
     font-size: 14px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 2px;
     color: var(--text-secondary);
     margin-bottom: 24px;
@@ -829,12 +831,14 @@ html.theme-transitioning .post-detail-header * {
     font-weight: 700;
     margin-bottom: 8px;
     letter-spacing: -0.5px;
+    text-transform: lowercase;
 }
 
 .page-subtitle {
     color: var(--text-secondary);
     font-size: 14px;
     margin-bottom: 40px;
+    text-transform: lowercase;
 }
 
 /* Resume Styles */
@@ -1292,6 +1296,7 @@ html.theme-transitioning::before {
     font-weight: 700;
     margin-bottom: 4px;
     letter-spacing: -0.3px;
+    text-transform: lowercase;
 }
 
 .resume-title {
@@ -1299,6 +1304,7 @@ html.theme-transitioning::before {
     color: var(--text-secondary);
     margin-bottom: 16px;
     font-weight: 400;
+    text-transform: lowercase;
 }
 
 .resume-contact-grid {
@@ -1342,6 +1348,7 @@ a.resume-contact-item:hover {
     font-size: 0.8rem;
     transition: all 0.2s ease;
     border: 2px solid var(--accent);
+    text-transform: lowercase;
 }
 
 .resume-download-btn:hover {
@@ -1382,6 +1389,7 @@ a.resume-contact-item:hover {
     margin-bottom: 24px;
     padding-bottom: 12px;
     border-bottom: 2px solid var(--border);
+    text-transform: lowercase;
 }
 
 .resume-section-icon {
@@ -2088,6 +2096,11 @@ html.dark-mode .resume-job:hover {
 }
 
 /* ==================== ROBOT PAGE STYLES ==================== */
+.bit-page h1,
+.bit-page h2 {
+    text-transform: lowercase;
+}
+
 .robot-card {
     background: var(--bg-secondary);
     border-radius: 12px;
@@ -2223,6 +2236,7 @@ html.dark-mode .error-oops {
     font-weight: 700;
     margin-bottom: 12px;
     color: var(--text-primary);
+    text-transform: lowercase;
 }
 
 .error-message {
@@ -2247,6 +2261,7 @@ html.dark-mode .error-oops {
     font-weight: 600;
     border-radius: 8px;
     transition: all 0.2s ease;
+    text-transform: lowercase;
 }
 
 .error-btn:hover {

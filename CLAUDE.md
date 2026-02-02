@@ -35,6 +35,11 @@ blog/
 └── CLAUDE.md
 ```
 
+## Git
+
+- **Main branch:** `master`
+- PRs should target `master`
+
 ## Tech Stack
 
 - React 18 + React Router
@@ -215,6 +220,7 @@ Without credentials, the app uses mock data for development.
 - Dark/light mode via `.dark-mode` class on `<html>`
 - Tags are linked entries (not strings)
 - Images use Contentful's image API for optimization
+- **Lowercase titles via CSS**: UI titles, nav labels, section headings, and page titles display as lowercase via `text-transform: lowercase` in CSS. Keep source text properly cased (better for SEO, accessibility, screen readers). The CSS handles the visual transformation. Affected classes include: `.nav-link`, `.page-title`, `.page-subtitle`, `.resume-name`, `.resume-title`, `.resume-section-title`, `.resume-download-btn`, `.error-title`, `.error-btn`, `.back-link`, `.related-posts h2`, `.hero-badge`, `.bit-page h1/h2`
 
 ## Bit - Robot Mascot
 
