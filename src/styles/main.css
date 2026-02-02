@@ -425,10 +425,15 @@ header.header--scrolled {
     font-size: 13px;
     line-height: 1.6;
     margin-bottom: 12px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    white-space: nowrap;
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .post-excerpt {
+        white-space: normal;
+        overflow: visible;
+    }
 }
 
 .post-tags {
@@ -1269,9 +1274,11 @@ html.theme-transitioning::before {
 /* Resume Hero */
 .resume-hero {
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-    padding: 60px 20px 50px;
-    margin-bottom: 40px;
+    padding: 24px 20px 20px;
+    margin-bottom: 32px;
     border-bottom: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
 }
 
 .resume-hero-content {
@@ -1281,16 +1288,16 @@ html.theme-transitioning::before {
 }
 
 .resume-name {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
 }
 
 .resume-title {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     font-weight: 400;
 }
 
@@ -1298,8 +1305,8 @@ html.theme-transitioning::before {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px 24px;
-    margin-bottom: 28px;
+    gap: 12px 20px;
+    margin-bottom: 16px;
 }
 
 .resume-contact-item {
@@ -1325,14 +1332,14 @@ a.resume-contact-item:hover {
 .resume-download-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
+    gap: 8px;
+    padding: 8px 16px;
     background: var(--accent);
     color: var(--bg-primary);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     transition: all 0.2s ease;
     border: 2px solid var(--accent);
 }
@@ -1625,19 +1632,19 @@ html.dark-mode .resume-job:hover {
 /* Responsive */
 @media (max-width: 768px) {
     .resume-hero {
-        padding: 40px 16px 36px;
+        padding: 20px 16px 16px;
     }
 
     .resume-name {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
     }
 
     .resume-title {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .resume-contact-grid {
-        gap: 12px 16px;
+        gap: 8px 12px;
     }
 
     .resume-contact-item {
@@ -1672,3 +1679,602 @@ html.dark-mode .resume-job:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==================== ROBOT ANIMATIONS ==================== */
+
+/* Base robot styles */
+.robot {
+    display: inline-block;
+}
+
+/* Keyframes for all emotions */
+@keyframes robot-happy-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes robot-happy-antenna {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+@keyframes robot-sad-sway {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    50% { transform: translateX(-2px) rotate(-2deg); }
+}
+
+@keyframes robot-sad-droop {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(2px); }
+}
+
+@keyframes robot-mad-shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes robot-mad-arms {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes robot-surprised-jump {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-6px) scale(1.02); }
+}
+
+@keyframes robot-surprised-eyes {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes robot-confused-tilt {
+    0%, 100% { transform: rotate(0deg); }
+    33% { transform: rotate(5deg); }
+    66% { transform: rotate(-5deg); }
+}
+
+@keyframes robot-confused-question {
+    0%, 100% { opacity: 1; transform: translateY(0); }
+    50% { opacity: 0.5; transform: translateY(-2px); }
+}
+
+@keyframes robot-thinking-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes robot-thinking-head {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(1px); }
+}
+
+@keyframes robot-love-pulse {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.05); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.03); }
+}
+
+@keyframes robot-love-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+@keyframes robot-love-eyes {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes robot-excited-bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-5px) scale(1.02); }
+    50% { transform: translateY(0) scale(1); }
+    75% { transform: translateY(-3px) scale(1.01); }
+}
+
+@keyframes robot-excited-exclaim {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(-3px); opacity: 0.7; }
+}
+
+@keyframes robot-shrug-arms {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes robot-shrug-head {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(3deg); }
+}
+
+@keyframes robot-wave-arm {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(15deg); }
+}
+
+@keyframes robot-wave-body {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-2deg); }
+}
+
+@keyframes robot-dance-body {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-3px) rotate(-3deg); }
+    75% { transform: translateX(3px) rotate(3deg); }
+}
+
+@keyframes robot-dance-arms {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+}
+
+@keyframes robot-dance-legs {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+@keyframes robot-sleep-breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+}
+
+@keyframes robot-sleep-zzz {
+    0% { opacity: 0; transform: translateY(0) translateX(0); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-8px) translateX(4px); }
+}
+
+@keyframes robot-idle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-1px); }
+}
+
+@keyframes robot-idle-antenna {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(2deg); }
+}
+
+/* Hover animations for each emotion */
+
+/* Happy */
+.robot-happy:hover {
+    animation: robot-happy-bounce 0.6s ease-in-out infinite;
+}
+.robot-happy:hover .robot-antenna-ball {
+    transform-origin: 32px 14px;
+    animation: robot-happy-antenna 0.4s ease-in-out infinite;
+}
+
+/* Sad */
+.robot-sad:hover {
+    animation: robot-sad-sway 2s ease-in-out infinite;
+}
+.robot-sad:hover .robot-antenna-ball,
+.robot-sad:hover .robot-antenna-stem {
+    animation: robot-sad-droop 2s ease-in-out infinite;
+}
+
+/* Mad */
+.robot-mad:hover {
+    animation: robot-mad-shake 0.3s ease-in-out infinite;
+}
+.robot-mad:hover .robot-arm-left,
+.robot-mad:hover .robot-arm-right {
+    transform-origin: center;
+    animation: robot-mad-arms 0.2s ease-in-out infinite;
+}
+
+/* Surprised */
+.robot-surprised:hover {
+    animation: robot-surprised-jump 0.5s ease-out infinite;
+}
+.robot-surprised:hover .robot-eye-left,
+.robot-surprised:hover .robot-eye-right {
+    transform-origin: center;
+    animation: robot-surprised-eyes 0.5s ease-out infinite;
+}
+
+/* Confused */
+.robot-confused:hover {
+    transform-origin: center bottom;
+    animation: robot-confused-tilt 1.5s ease-in-out infinite;
+}
+.robot-confused:hover .robot-question {
+    animation: robot-confused-question 0.8s ease-in-out infinite;
+}
+
+/* Thinking */
+.robot-thinking:hover .robot-head {
+    animation: robot-thinking-head 2s ease-in-out infinite;
+}
+.robot-thinking:hover .robot-thought {
+    animation: robot-thinking-pulse 1.5s ease-in-out infinite;
+}
+.robot-thinking:hover .robot-antenna-ball {
+    animation: robot-thinking-pulse 1.5s ease-in-out infinite 0.2s;
+}
+
+/* Love */
+.robot-love:hover {
+    animation: robot-love-float 2s ease-in-out infinite, robot-love-pulse 1s ease-in-out infinite;
+}
+.robot-love:hover .robot-eye-left,
+.robot-love:hover .robot-eye-right {
+    transform-origin: center;
+    animation: robot-love-eyes 1s ease-in-out infinite;
+}
+
+/* Excited */
+.robot-excited:hover {
+    animation: robot-excited-bounce 0.4s ease-in-out infinite;
+}
+.robot-excited:hover .robot-exclaim-left,
+.robot-excited:hover .robot-exclaim-right {
+    animation: robot-excited-exclaim 0.3s ease-in-out infinite;
+}
+.robot-excited:hover .robot-exclaim-right {
+    animation-delay: 0.1s;
+}
+
+/* Shrug */
+.robot-shrug:hover {
+    animation: robot-shrug-head 1.2s ease-in-out infinite;
+}
+.robot-shrug:hover .robot-arm-left,
+.robot-shrug:hover .robot-arm-right {
+    animation: robot-shrug-arms 1.2s ease-in-out infinite;
+}
+
+/* Waving */
+.robot-waving:hover {
+    animation: robot-wave-body 0.6s ease-in-out infinite;
+}
+.robot-waving:hover .robot-waving-arm {
+    transform-origin: 44px 52px;
+    animation: robot-wave-arm 0.4s ease-in-out infinite;
+}
+
+/* Dancing */
+.robot-dancing:hover {
+    animation: robot-dance-body 0.5s ease-in-out infinite;
+}
+.robot-dancing:hover .robot-arm-left {
+    transform-origin: 20px 52px;
+    animation: robot-dance-arms 0.25s ease-in-out infinite;
+}
+.robot-dancing:hover .robot-arm-right {
+    transform-origin: 44px 52px;
+    animation: robot-dance-arms 0.25s ease-in-out infinite 0.125s;
+}
+.robot-dancing:hover .robot-leg-left,
+.robot-dancing:hover .robot-leg-right {
+    animation: robot-dance-legs 0.25s ease-in-out infinite;
+}
+
+/* Sleeping */
+.robot-sleeping:hover {
+    animation: robot-sleep-breathe 3s ease-in-out infinite;
+}
+.robot-sleeping:hover .robot-zzz {
+    animation: robot-sleep-zzz 2s ease-in-out infinite;
+}
+
+/* Neutral */
+.robot-neutral:hover {
+    animation: robot-idle 3s ease-in-out infinite;
+}
+.robot-neutral:hover .robot-antenna-ball {
+    transform-origin: 32px 14px;
+    animation: robot-idle-antenna 3s ease-in-out infinite;
+}
+
+/* Talking */
+@keyframes robot-talk-gesture {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+@keyframes robot-talk-speech {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+@keyframes robot-talk-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+.robot-talking:hover {
+    animation: robot-talk-bob 0.4s ease-in-out infinite;
+}
+.robot-talking:hover .robot-speech {
+    animation: robot-talk-speech 0.3s ease-in-out infinite;
+}
+.robot-talking:hover .robot-arm-left,
+.robot-talking:hover .robot-arm-right {
+    transform-origin: center top;
+    animation: robot-talk-gesture 0.5s ease-in-out infinite;
+}
+
+/* Walking Front */
+@keyframes robot-walk-front-body {
+    0%, 100% { transform: translateY(0); }
+    25%, 75% { transform: translateY(-2px); }
+}
+
+@keyframes robot-walk-front-leg-left {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-15deg); }
+}
+
+@keyframes robot-walk-front-leg-right {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(15deg); }
+}
+
+@keyframes robot-walk-front-arm-left {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+}
+
+@keyframes robot-walk-front-arm-right {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-10deg); }
+}
+
+.robot-walking-front:hover {
+    animation: robot-walk-front-body 0.4s ease-in-out infinite;
+}
+.robot-walking-front:hover .robot-leg-left {
+    transform-origin: 27px 68px;
+    animation: robot-walk-front-leg-left 0.4s ease-in-out infinite;
+}
+.robot-walking-front:hover .robot-leg-right {
+    transform-origin: 37px 68px;
+    animation: robot-walk-front-leg-right 0.4s ease-in-out infinite;
+}
+.robot-walking-front:hover .robot-arm-left {
+    transform-origin: 20px 52px;
+    animation: robot-walk-front-arm-right 0.4s ease-in-out infinite;
+}
+.robot-walking-front:hover .robot-arm-right {
+    transform-origin: 44px 52px;
+    animation: robot-walk-front-arm-left 0.4s ease-in-out infinite;
+}
+
+/* Walking Side */
+@keyframes robot-walk-side-body {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(2px) translateY(-2px); }
+    75% { transform: translateX(-2px) translateY(-2px); }
+}
+
+@keyframes robot-walk-side-leg-front {
+    0% { transform: rotate(-20deg); }
+    50% { transform: rotate(20deg); }
+    100% { transform: rotate(-20deg); }
+}
+
+@keyframes robot-walk-side-leg-back {
+    0% { transform: rotate(20deg); }
+    50% { transform: rotate(-20deg); }
+    100% { transform: rotate(20deg); }
+}
+
+@keyframes robot-walk-side-arm {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
+}
+
+.robot-walking-side:hover {
+    animation: robot-walk-side-body 0.4s ease-in-out infinite;
+}
+.robot-walking-side:hover .robot-leg-left {
+    transform-origin: 30px 68px;
+    animation: robot-walk-side-leg-front 0.4s ease-in-out infinite;
+}
+.robot-walking-side:hover .robot-leg-right {
+    transform-origin: 34px 68px;
+    animation: robot-walk-side-leg-back 0.4s ease-in-out infinite;
+}
+.robot-walking-side:hover .robot-arm-right {
+    transform-origin: 36px 52px;
+    animation: robot-walk-side-arm 0.4s ease-in-out infinite;
+}
+
+/* ==================== ROBOT PAGE STYLES ==================== */
+.robot-card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s ease;
+}
+
+.robot-card:hover {
+    border-color: var(--text-secondary);
+}
+
+.robot-card-preview {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.robot-card-name {
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: capitalize;
+}
+
+/* ==================== HEADER BIT MASCOT ==================== */
+.header-bit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+    margin-right: 8px;
+    color: var(--text-primary);
+}
+
+.header-bit:hover {
+    opacity: 0.3;
+}
+
+/* Mobile: always animate */
+@media (max-width: 768px) {
+    .header-bit {
+        opacity: 0.25;
+    }
+
+    .header-bit .robot-waving {
+        animation: robot-wave-body 0.5s ease-in-out infinite;
+    }
+
+    .header-bit .robot-waving .robot-arm-right {
+        transform-origin: 44px 52px;
+        animation: robot-wave-arm 0.4s ease-in-out infinite;
+    }
+
+    .header-bit .robot-waving .robot-hand-right {
+        animation: robot-wave-hand 0.4s ease-in-out infinite;
+    }
+}
+
+/* ==================== ERROR PAGE ==================== */
+.error-page {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+}
+
+.error-content {
+    position: relative;
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.error-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.error-oops {
+    font-size: clamp(120px, 25vw, 280px);
+    font-weight: 700;
+    color: var(--border);
+    opacity: 0.5;
+    text-transform: lowercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+html.dark-mode .error-oops {
+    opacity: 0.3;
+}
+
+.error-robot {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 24px;
+    animation: error-robot-float 3s ease-in-out infinite;
+}
+
+@keyframes error-robot-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.error-text {
+    position: relative;
+    z-index: 1;
+}
+
+.error-code {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.error-title {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.error-message {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.6;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.error-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: var(--bg-primary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.error-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.error-btn svg {
+    transition: transform 0.2s ease;
+}
+
+.error-btn:hover svg {
+    transform: translateX(-3px);
+}
+
+/* Responsive error page */
+@media (max-width: 480px) {
+    .error-page {
+        padding: 40px 0;
+    }
+
+    .error-robot svg {
+        width: 120px;
+        height: auto;
+    }
+
+    .error-oops {
+        font-size: 100px;
+    }
+}
+

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" fill="currentColor">
+  <!-- Antenna -->
+  <circle cx="32" cy="4" r="4"/>
+  <rect x="30" y="7" width="4" height="7"/>
+
+  <!-- Head - outline only -->
+  <rect x="14" y="14" width="36" height="26" rx="8" ry="8" fill="none" stroke="currentColor" stroke-width="3"/>
+
+  <!-- Eyes - flat lines -->
+  <line x1="20" y1="27" x2="28" y2="27" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="36" y1="27" x2="44" y2="27" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Body - thinner and taller -->
+  <rect x="24" y="46" width="16" height="18" rx="3" ry="3"/>
+
+  <!-- Arms - one up, one down -->
+  <line x1="18" y1="52" x2="14" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="14" cy="50" r="2"/>
+  <line x1="46" y1="52" x2="50" y2="54" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="50" cy="54" r="2"/>
+
+  <!-- Legs - disconnected with dome feet -->
+  <line x1="28.5" y1="68" x2="28.5" y2="73" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M25 73 A3.5 3.5 0 0 0 32 73" stroke="currentColor" stroke-width="2" fill="none"/>
+  <line x1="35.5" y1="68" x2="35.5" y2="73" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M32 73 A3.5 3.5 0 0 0 39 73" stroke="currentColor" stroke-width="2" fill="none"/>
+</svg>

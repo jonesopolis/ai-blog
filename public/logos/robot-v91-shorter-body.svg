@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 76" fill="currentColor">
+  <!-- Antenna - line style -->
+  <circle cx="32" cy="4" r="3"/>
+  <line x1="32" y1="7" x2="32" y2="14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Head - outline -->
+  <rect x="16" y="14" width="32" height="26" rx="8" ry="8" fill="none" stroke="currentColor" stroke-width="3"/>
+
+  <!-- Eyes - flat lines -->
+  <line x1="22" y1="27" x2="28" y2="27" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="36" y1="27" x2="42" y2="27" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Body - outline, shorter, with two dots -->
+  <rect x="26" y="46" width="12" height="14" rx="3" ry="3" fill="none" stroke="currentColor" stroke-width="3"/>
+  <circle cx="32" cy="50" r="1.5"/>
+  <circle cx="32" cy="56" r="1.5"/>
+
+  <!-- Arms - angled down -->
+  <line x1="20" y1="50" x2="14" y2="54" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="14" cy="54" r="2"/>
+  <line x1="44" y1="50" x2="50" y2="54" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="50" cy="54" r="2"/>
+
+  <!-- Legs - with rounded semi-circle feet -->
+  <line x1="27" y1="64" x2="27" y2="68" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M24 68 A3 3 0 0 0 30 68" stroke="currentColor" stroke-width="2" fill="none"/>
+  <line x1="37" y1="64" x2="37" y2="68" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M34 68 A3 3 0 0 0 40 68" stroke="currentColor" stroke-width="2" fill="none"/>
+</svg>

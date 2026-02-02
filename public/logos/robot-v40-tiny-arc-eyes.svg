@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80" fill="currentColor">
+  <!-- Antenna -->
+  <circle cx="32" cy="4" r="4"/>
+  <rect x="30" y="7" width="4" height="7"/>
+
+  <!-- Head - outline only -->
+  <rect x="14" y="14" width="36" height="26" rx="8" ry="8" fill="none" stroke="currentColor" stroke-width="3"/>
+
+  <!-- Eyes - very subtle arc, barely curved -->
+  <path d="M20 27 Q24 26 28 27" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M36 27 Q40 26 44 27" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Body - thinner and taller -->
+  <rect x="24" y="46" width="16" height="18" rx="3" ry="3"/>
+
+  <!-- Arms - closer to body, short, angled up -->
+  <line x1="18" y1="54" x2="14" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="14" cy="50" r="2"/>
+  <line x1="46" y1="54" x2="50" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="50" cy="50" r="2"/>
+
+  <!-- Legs - disconnected with half-arc feet -->
+  <rect x="27" y="68" width="3" height="8" rx="1.5"/>
+  <path d="M26 76 Q28.5 79 31 76" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <rect x="34" y="68" width="3" height="8" rx="1.5"/>
+  <path d="M33 76 Q35.5 79 38 76" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>

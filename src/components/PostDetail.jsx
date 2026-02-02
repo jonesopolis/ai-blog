@@ -6,6 +6,7 @@ import { getPostIcon } from './PostIcons';
 import SEO from './SEO';
 import Footer from './Footer';
 import RelatedPosts from './RelatedPosts';
+import ErrorPage from './ErrorPage';
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -66,20 +67,18 @@ export default function PostDetail() {
 
   if (!post) {
     return (
-      <div className="container">
-        <section className="page-section">
-          <h1 className="page-title">{settings.notFoundTitle}</h1>
-          <p>{settings.notFoundMessage}</p>
-          <Link to="/" className="btn">{settings.backToHomeText}</Link>
-        </section>
-      </div>
+      <ErrorPage
+        code="404"
+        title="Post Not Found"
+        message="The post you're looking for doesn't exist or has been moved."
+      />
     );
   }
 
   return (
     <>
       <SEO
-        title={post.metaTitle || `${post.title} | Learning AI`}
+        title={post.metaTitle || `${post.title} | Please Recompile`}
         description={post.metaDescription || post.excerpt}
         image={post.mainImage}
         type="article"

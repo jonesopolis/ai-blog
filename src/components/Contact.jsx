@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getContactPage, getSiteSettings } from '../contentful';
 import SEO from './SEO';
+import Footer from './Footer';
 
 export default function Contact() {
   const [contact, setContact] = useState(null);
@@ -86,6 +87,7 @@ export default function Contact() {
           </div>
         </section>
       </div>
+      <Footer />
     </>
   );
 }

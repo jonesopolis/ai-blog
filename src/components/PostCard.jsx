@@ -11,7 +11,7 @@ export default function PostCard({ post }) {
   const hasThumbnail = post.thumbnailImage;
 
   return (
-    <Link to={`/post/${post.slug}`} className="post-card">
+    <Link to={`/${post.slug}`} className="post-card">
       <div className="post-image">
         {hasThumbnail ? (
           <div

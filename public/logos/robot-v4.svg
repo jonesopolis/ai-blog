@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" fill="currentColor">
+  <!-- Antenna - double prong -->
+  <circle cx="28" cy="5" r="2.5"/>
+  <circle cx="36" cy="5" r="2.5"/>
+  <rect x="27" y="7" width="3" height="6"/>
+  <rect x="34" y="7" width="3" height="6"/>
+
+  <!-- Head - outline only -->
+  <rect x="14" y="13" width="36" height="26" rx="7" ry="7" fill="none" stroke="currentColor" stroke-width="3"/>
+
+  <!-- Eyes - dots -->
+  <circle cx="24" cy="25" r="3"/>
+  <circle cx="40" cy="25" r="3"/>
+
+  <!-- Body - taller -->
+  <rect x="20" y="41" width="24" height="18" rx="4" ry="4"/>
+
+  <!-- Arms - short straight with hand dots -->
+  <line x1="20" y1="48" x2="10" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="10" cy="52" r="2"/>
+  <line x1="44" y1="48" x2="54" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="54" cy="52" r="2"/>
+
+  <!-- Legs - feet style -->
+  <path d="M24 59 L24 68 L21 68 L21 66 L24 66" fill="currentColor"/>
+  <path d="M40 59 L40 68 L43 68 L43 66 L40 66" fill="currentColor"/>
+</svg>

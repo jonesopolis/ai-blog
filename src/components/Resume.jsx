@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getResumePage } from '../contentful';
 import SEO from './SEO';
+import Footer from './Footer';
 
 function DownloadIcon() {
   return (
@@ -281,6 +282,7 @@ export default function Resume() {
           </section>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

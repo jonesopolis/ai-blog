@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" fill="currentColor">
+  <!-- Antenna - curved -->
+  <circle cx="32" cy="3" r="3"/>
+  <path d="M32 6 Q32 10 32 14" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Head - outline only -->
+  <rect x="14" y="14" width="36" height="24" rx="12" ry="12" fill="none" stroke="currentColor" stroke-width="3"/>
+
+  <!-- Eyes - simple vertical lines -->
+  <rect x="22" y="22" width="3" height="8" rx="1.5"/>
+  <rect x="39" y="22" width="3" height="8" rx="1.5"/>
+
+  <!-- Body - taller pill shape -->
+  <rect x="22" y="40" width="20" height="18" rx="6" ry="6"/>
+
+  <!-- Arms - short straight with hand dots -->
+  <line x1="22" y1="46" x2="12" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="12" cy="50" r="2"/>
+  <line x1="42" y1="46" x2="52" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="52" cy="50" r="2"/>
+
+  <!-- Legs - simple rounded -->
+  <rect x="26" y="58" width="4" height="10" rx="2"/>
+  <rect x="34" y="58" width="4" height="10" rx="2"/>
+</svg>

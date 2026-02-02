@@ -14,21 +14,23 @@ async function fetchContentful(type, params = {}) {
 
 // Mock data for development without Contentful credentials
 const mockHero = {
-  title: 'Learning AI',
-  subtitle: 'A developer\'s journey through artificial intelligence, machine learning, and the future of code.',
+  title: 'Welcome to Please Recompile',
+  subtitle: 'A developer\'s journey into AI, machine learning, and the art of learning to code smarter. Join me as I explore, experiment, and share what I discover.',
 };
 
 const mockPosts = [
   {
     slug: 'getting-started-with-llms',
     title: 'Getting Started with LLMs',
-    excerpt: 'My first steps into the world of large language models and what I learned along the way.',
+    excerpt: 'How LLMs actually work, explained in terms I wish someone had told me earlier.',
     content: {
       nodeType: 'document',
+      data: {},
       content: [
         {
           nodeType: 'paragraph',
-          content: [{ nodeType: 'text', value: 'Large Language Models have revolutionized how we think about AI. In this post, I share my journey from skeptic to enthusiast, and the key concepts that helped me understand these powerful tools.' }],
+          data: {},
+          content: [{ nodeType: 'text', value: 'Large Language Models have revolutionized how we think about AI. In this post, I share my journey from skeptic to enthusiast, and the key concepts that helped me understand these powerful tools.', marks: [], data: {} }],
         },
       ],
     },
@@ -40,13 +42,15 @@ const mockPosts = [
   {
     slug: 'building-with-ai-agents',
     title: 'Building with AI Agents',
-    excerpt: 'Exploring the world of autonomous AI agents and how they can transform software development.',
+    excerpt: 'From concept to working prototype, and the mistakes I made along the way.',
     content: {
       nodeType: 'document',
+      data: {},
       content: [
         {
           nodeType: 'paragraph',
-          content: [{ nodeType: 'text', value: 'AI agents represent the next frontier in automation. Learn how I built my first agent and the lessons learned from the process.' }],
+          data: {},
+          content: [{ nodeType: 'text', value: 'AI agents represent the next frontier in automation. Learn how I built my first agent and the lessons learned from the process.', marks: [], data: {} }],
         },
       ],
     },
@@ -58,13 +62,15 @@ const mockPosts = [
   {
     slug: 'prompt-engineering-basics',
     title: 'Prompt Engineering Basics',
-    excerpt: 'The art and science of crafting effective prompts for AI models.',
+    excerpt: 'What I\'ve learned about crafting prompts that consistently get great results.',
     content: {
       nodeType: 'document',
+      data: {},
       content: [
         {
           nodeType: 'paragraph',
-          content: [{ nodeType: 'text', value: 'Good prompts are the key to getting great results from AI. Here\'s what I\'ve learned about writing prompts that work.' }],
+          data: {},
+          content: [{ nodeType: 'text', value: 'Good prompts are the key to getting great results from AI. Here\'s what I\'ve learned about writing prompts that work.', marks: [], data: {} }],
         },
       ],
     },
@@ -76,13 +82,15 @@ const mockPosts = [
   {
     slug: 'rag-explained',
     title: 'RAG Explained Simply',
-    excerpt: 'Understanding Retrieval-Augmented Generation and why it matters for AI applications.',
+    excerpt: 'How I implemented RAG to combine LLM power with my own documents.',
     content: {
       nodeType: 'document',
+      data: {},
       content: [
         {
           nodeType: 'paragraph',
-          content: [{ nodeType: 'text', value: 'RAG combines the power of retrieval systems with generative AI. This post breaks down the concept in simple terms.' }],
+          data: {},
+          content: [{ nodeType: 'text', value: 'RAG combines the power of retrieval systems with generative AI. This post breaks down the concept in simple terms.', marks: [], data: {} }],
         },
       ],
     },
@@ -94,7 +102,7 @@ const mockPosts = [
 ];
 
 const mockFooter = {
-  copyright: '© 2024 Learning AI',
+  copyright: '© 2024 Please Recompile',
   tagline: 'exploring intelligence, one token at a time',
 };
 
@@ -149,15 +157,38 @@ export async function getFooter() {
 
 // Mock data for site settings
 const mockSiteSettings = {
-  logoText: '// learning.ai',
-  heroBadgeText: 'Currently exploring AI',
+  // Branding
+  logoText: '// please recompile',
+  heroBadgeText: 'Currently recompiling',
+
+  // Navigation
+  navBlogLabel: 'Blog',
+  navResumeLabel: 'Resume',
+  navContactLabel: 'Contact',
+
+  // Post navigation
   backToPostsText: 'Back to posts',
   backToHomeText: '← Back to home',
-  notFoundTitle: 'Post not found',
-  notFoundMessage: "The post you're looking for doesn't exist.",
+  relatedPostsTitle: 'Related Posts',
+
+  // 404 error page
+  notFoundTitle: 'Page Not Found',
+  notFoundMessage: "The page you're looking for doesn't exist or has been moved.",
+
+  // 500 error page
+  errorTitle: 'Something Went Wrong',
+  errorMessage: 'An unexpected error occurred. Please try refreshing the page.',
+  errorBackgroundText: 'oops',
+  errorButtonText: 'Back to Home',
+
+  // Loading states
   loadingText: 'Loading posts...',
-  defaultSiteTitle: "Learning AI | A Developer's Journey",
-  defaultSiteDescription: 'A blog about learning AI, machine learning, and the journey of a developer exploring artificial intelligence.',
+
+  // SEO defaults
+  defaultSiteTitle: "Please Recompile | A Developer's Journey",
+  defaultSiteDescription: 'A blog about learning AI, machine learning, and the journey of a developer exploring artificial intelligence. Please recompile.',
+
+  // Social links
   contactEmail: 'hello@example.com',
   githubUrl: 'https://github.com',
   linkedinUrl: 'https://linkedin.com',
@@ -178,15 +209,15 @@ const mockResumePage = {
   education: 'University of Kentucky | Bachelor of Science in Computer Science | Graduated May 2012',
   certifications: 'Microsoft Certified Developer – C#\nMicrosoft Certified Developer – Azure',
   pdfUrl: '/ATS_Resume.pdf',
-  seoTitle: 'David Rector | Software Architect',
-  seoDescription: 'Software Architect with 14+ years building enterprise .NET solutions in Azure.',
+  seoTitle: 'David Rector | Please Recompile',
+  seoDescription: 'Software Architect with 14+ years building enterprise .NET solutions in Azure. Please recompile.',
 };
 
 const mockContactPage = {
   pageTitle: 'Contact',
   pageSubtitle: "Let's connect",
-  seoTitle: 'Contact | Learning AI',
-  seoDescription: 'Get in touch to discuss AI, development, or collaboration opportunities.',
+  seoTitle: 'Contact | Please Recompile',
+  seoDescription: 'Get in touch to discuss AI, development, or collaboration opportunities. Please recompile.',
   introText: "I'm always interested in discussing AI, machine learning, and software development. Whether you have a question, want to collaborate, or just want to say hi - feel free to reach out.",
 };
 

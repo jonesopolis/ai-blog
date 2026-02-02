@@ -48,7 +48,7 @@ export default function RelatedPosts({ currentSlug, tags }) {
       <h2>Related Posts</h2>
       <div className="related-posts-grid">
         {posts.map((post) => (
-          <Link key={post.slug} to={`/post/${post.slug}`} className="related-post-card">
+          <Link key={post.slug} to={`/${post.slug}`} className="related-post-card">
             <div className="related-post-content">
               <h3>{post.title}</h3>
               <span className="post-date">{formatDate(post.publishDate)}</span>

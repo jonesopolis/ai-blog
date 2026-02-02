@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" fill="currentColor">
+  <!-- Antenna - zigzag style -->
+  <circle cx="32" cy="4" r="3"/>
+  <path d="M32 7 L32 10 L30 12 L32 14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Head - outline only -->
+  <rect x="16" y="16" width="32" height="22" rx="10" ry="10" fill="none" stroke="currentColor" stroke-width="3"/>
+
+  <!-- Eyes - half circles / sleepy look -->
+  <path d="M21 26 Q25 22 29 26" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M35 26 Q39 22 43 26" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Body - taller -->
+  <rect x="22" y="40" width="20" height="18" rx="4" ry="4"/>
+
+  <!-- Arms - short straight with hand dots -->
+  <line x1="22" y1="46" x2="12" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="12" cy="50" r="2"/>
+  <line x1="42" y1="46" x2="52" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="52" cy="50" r="2"/>
+
+  <!-- Legs -->
+  <rect x="25" y="58" width="5" height="11" rx="2.5"/>
+  <rect x="34" y="58" width="5" height="11" rx="2.5"/>
+</svg>
