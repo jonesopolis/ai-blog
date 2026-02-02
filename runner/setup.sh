@@ -3,7 +3,8 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
-RUNNER_DIR="$SCRIPT_DIR/.runner"
+# Install runner in a path without spaces to avoid issues
+RUNNER_DIR="/tmp/github-runner"
 
 # Colors
 RED='\033[0;31m'
@@ -57,11 +58,11 @@ RUNNER_URL="https://github.com/actions/runner/releases/download/v${RUNNER_VERSIO
 
 # Check if runner is already configured
 if [[ -f "$RUNNER_DIR/.runner" ]]; then
-    echo -e "${YELLOW}Runner already configured.${NC}"
+    echo -e "${YELLOW}Runner already configured at ${RUNNER_DIR}${NC}"
     echo ""
     echo "Options:"
-    echo "  1. Start runner:    $SCRIPT_DIR/start.sh"
-    echo "  2. Reconfigure:     rm -rf $RUNNER_DIR && $0"
+    echo "  1. Start runner:    cd ${RUNNER_DIR} && ./run.sh"
+    echo "  2. Reconfigure:     rm -rf ${RUNNER_DIR} && $0"
     exit 0
 fi
 
@@ -101,8 +102,10 @@ mkdir -p "$WORK_DIR"
 echo ""
 echo -e "${GREEN}✓ Runner configured successfully!${NC}"
 echo ""
-echo "To start the runner:"
-echo "  $SCRIPT_DIR/start.sh"
+echo "Runner installed at: ${RUNNER_DIR}"
 echo ""
-echo "To install as a service (runs on boot):"
-echo "  $SCRIPT_DIR/install-service.sh"
+echo "To start the runner:"
+echo "  cd ${RUNNER_DIR} && ./run.sh"
+echo ""
+echo "Or use the helper script:"
+echo "  $SCRIPT_DIR/start.sh"
