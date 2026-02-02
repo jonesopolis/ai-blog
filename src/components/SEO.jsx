@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 
 export default function SEO({ title, description, image, type = 'website' }) {
   useEffect(() => {
-    // Update document title
+    // Update document title (always lowercase)
     if (title) {
-      document.title = title;
+      document.title = title.toLowerCase();
     }
 
     // Update meta tags

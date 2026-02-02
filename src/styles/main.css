@@ -285,7 +285,7 @@ header.header--scrolled {
 .hero p {
     color: var(--text-secondary);
     font-size: 14px;
-    max-width: 580px;
+    max-width: 700px;
     line-height: 1.8;
     opacity: 0.85;
 }
@@ -437,6 +437,7 @@ header.header--scrolled {
     font-weight: 600;
     margin: 0;
     transition: color 0.2s ease;
+    text-transform: lowercase;
 }
 
 .post-card:hover .post-title {
@@ -562,6 +563,7 @@ header.header--scrolled {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-transform: lowercase;
 }
 
 .sticky-title-meta {
@@ -691,6 +693,7 @@ html.theme-transitioning .post-detail-header * {
     font-weight: 700;
     letter-spacing: -0.5px;
     scroll-margin-top: 70px;
+    text-transform: lowercase;
 }
 
 .post-detail-header .post-date {
