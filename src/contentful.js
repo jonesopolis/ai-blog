@@ -12,13 +12,14 @@ async function fetchContentful(type, params = {}) {
   return payload.data;
 }
 
-// Mock data for development without Contentful credentials
-const mockHero = {
+// Fallback data
+// hero.subtitle also serves as the default site SEO description
+const hero = {
   title: 'Welcome to Please Recompile',
-  subtitle: 'A developer\'s journey into AI, machine learning, and the art of learning to code smarter. Join me as I explore, experiment, and share what I discover.',
+  subtitle: "Software architecture is evolving. AI is making code cheaper and faster to write—the real value now is in vision, planning, and building systems that last. I'm here for it, join me as I recompile.",
 };
 
-const mockPosts = [
+const posts = [
   {
     slug: 'getting-started-with-llms',
     title: 'Getting Started with LLMs',
@@ -101,37 +102,37 @@ const mockPosts = [
   },
 ];
 
-const mockFooter = {
-  copyright: '© 2024 Please Recompile',
-  tagline: 'exploring intelligence, one token at a time',
+const footer = {
+  copyright: '© 2026 Please Recompile',
+  tagline: 'rebuilding how I build',
 };
 
 export async function getHero() {
-  if (shouldUseDemo) return mockHero;
+  if (shouldUseDemo) return hero;
 
   try {
     const data = await fetchContentful('hero');
-    if (!data) return mockHero;
+    if (!data) return hero;
     return data;
   } catch (error) {
-    return mockHero;
+    return hero;
   }
 }
 
 export async function getPosts() {
-  if (shouldUseDemo) return mockPosts;
+  if (shouldUseDemo) return posts;
 
   try {
     const data = await fetchContentful('posts');
-    return data || mockPosts;
+    return data || posts;
   } catch (error) {
-    return mockPosts;
+    return posts;
   }
 }
 
 export async function getPostBySlug(slug) {
   if (shouldUseDemo) {
-    return mockPosts.find((p) => p.slug === slug) || null;
+    return posts.find((p) => p.slug === slug) || null;
   }
 
   try {
@@ -139,24 +140,24 @@ export async function getPostBySlug(slug) {
     if (!data) return null;
     return data;
   } catch (error) {
-    return mockPosts.find((p) => p.slug === slug) || null;
+    return posts.find((p) => p.slug === slug) || null;
   }
 }
 
 export async function getFooter() {
-  if (shouldUseDemo) return mockFooter;
+  if (shouldUseDemo) return footer;
 
   try {
     const data = await fetchContentful('footer');
-    if (!data) return mockFooter;
+    if (!data) return footer;
     return data;
   } catch (error) {
-    return mockFooter;
+    return footer;
   }
 }
 
-// Mock data for site settings
-const mockSiteSettings = {
+// Site settings fallback
+const siteSettings = {
   // Branding
   logoText: '// please recompile',
   heroBadgeText: 'Currently recompiling',
@@ -182,24 +183,19 @@ const mockSiteSettings = {
   // Loading states
   loadingText: 'Loading...',
 
-  // SEO defaults
-  defaultSiteTitle: 'Please Recompile',
-  defaultSiteDescription: 'A blog about learning AI, machine learning, and the journey of a developer exploring artificial intelligence. Please recompile.',
-
   // Social links
-  contactEmail: 'hello@example.com',
-  githubUrl: 'https://github.com',
-  linkedinUrl: 'https://linkedin.com',
-  twitterUrl: 'https://twitter.com',
+  contactEmail: 'davidarector@gmail.com',
+  githubUrl: 'https://github.com/jonesopolis',
+  linkedinUrl: 'https://linkedin.com/in/davidarector',
 };
 
-const mockResumePage = {
+const resumePage = {
   fullName: 'David Rector',
   location: 'Castle Rock, Colorado',
   phone: '859-396-5280',
   email: 'davidarector@gmail.com',
   linkedinUrl: 'https://linkedin.com/in/davidrector',
-  portfolioUrl: 'https://codeinspace.io',
+  websiteUrl: 'https://jonesopolis.github.io',
   professionalSummary: 'Software Architect and Technical Leader with 14+ years architecting enterprise-scale .NET solutions in Azure cloud environments.',
   keyAchievements: 'Led $1.9M project portfolio (2023)\n4x Microsoft Certified Developer\nArchitected solutions serving 500K+ concurrent users',
   experience: '[]',
@@ -207,48 +203,47 @@ const mockResumePage = {
   education: 'University of Kentucky | Bachelor of Science in Computer Science | Graduated May 2012',
   certifications: 'Microsoft Certified Developer – C#\nMicrosoft Certified Developer – Azure',
   pdfUrl: '/ATS_Resume.pdf',
-  seoTitle: 'David Rector | Please Recompile',
-  seoDescription: 'Software Architect with 14+ years building enterprise .NET solutions in Azure. Please recompile.',
+  seoTitle: 'david rector | please recompile',
+  seoDescription: 'Software Architect with 14+ years building enterprise .NET solutions in Azure.',
 };
 
-const mockContactPage = {
+const contactPage = {
   pageTitle: 'Contact',
   pageSubtitle: "Let's connect",
-  seoTitle: 'Contact | Please Recompile',
-  seoDescription: 'Get in touch to discuss AI, development, or collaboration opportunities. Please recompile.',
-  introText: "I'm always interested in discussing AI, machine learning, and software development. Whether you have a question, want to collaborate, or just want to say hi - feel free to reach out.",
+  seoTitle: 'contact | please recompile',
+  introText: "Still recompiling. Happy to talk about it. Whether it's AI, architecture, or just swapping ideas—reach out.",
 };
 
 export async function getSiteSettings() {
-  if (shouldUseDemo) return mockSiteSettings;
+  if (shouldUseDemo) return siteSettings;
 
   try {
     const data = await fetchContentful('siteSettings');
-    return data || mockSiteSettings;
+    return data || siteSettings;
   } catch (error) {
-    return mockSiteSettings;
+    return siteSettings;
   }
 }
 
 export async function getResumePage() {
-  if (shouldUseDemo) return mockResumePage;
+  if (shouldUseDemo) return resumePage;
 
   try {
     const data = await fetchContentful('resumePage');
-    return data || mockResumePage;
+    return data || resumePage;
   } catch (error) {
-    return mockResumePage;
+    return resumePage;
   }
 }
 
 export async function getContactPage() {
-  if (shouldUseDemo) return mockContactPage;
+  if (shouldUseDemo) return contactPage;
 
   try {
     const data = await fetchContentful('contactPage');
-    return data || mockContactPage;
+    return data || contactPage;
   } catch (error) {
-    return mockContactPage;
+    return contactPage;
   }
 }
 
@@ -256,7 +251,7 @@ export async function getRelatedPosts(currentSlug, tags, limit = 2) {
   if (shouldUseDemo) {
     // For demo, return posts that share at least one tag
     const currentTagSlugs = tags.map((t) => t.slug);
-    return mockPosts
+    return posts
       .filter((p) => p.slug !== currentSlug)
       .filter((p) => p.tags.some((t) => currentTagSlugs.includes(t.slug)))
       .slice(0, limit);

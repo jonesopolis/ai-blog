@@ -33,7 +33,7 @@ export default function Hero() {
           <span className="hero-badge-dot"></span>
           {settings.heroBadgeText}
         </div>
-        <h1>{hero.title}</h1>
+        <h1>{hero.title}<span className="hero-cursor"></span></h1>
         <p>{hero.subtitle}</p>
       </div>
       <div className="hero-decoration">

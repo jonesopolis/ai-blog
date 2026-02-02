@@ -164,9 +164,9 @@ export default function Resume() {
                 <LinkedInIcon />
                 <span>LinkedIn</span>
               </a>
-              <a href={resume.portfolioUrl} target="_blank" rel="noopener noreferrer" className="resume-contact-item">
+              <a href={resume.websiteUrl} target="_blank" rel="noopener noreferrer" className="resume-contact-item">
                 <GlobeIcon />
-                <span>Portfolio</span>
+                <span>Website</span>
               </a>
             </div>
 
