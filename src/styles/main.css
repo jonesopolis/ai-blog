@@ -482,7 +482,7 @@ header.header--scrolled {
 /* Sticky Title Bar */
 .sticky-title-bar {
     position: fixed;
-    top: 73px; /* Below compact header (12px padding + 47.5px content + 12px padding + 1px border) */
+    top: 71px; /* Below compact header */
     left: 0;
     right: 0;
     background-color: var(--bg-primary);
@@ -576,6 +576,44 @@ header.header--scrolled {
 .sticky-title-tags .tag {
     font-size: 9px;
     padding: 2px 6px;
+}
+
+/* Resume sticky title bar - inverted colors */
+.sticky-title-bar--resume {
+    background-color: var(--text-primary);
+    border-bottom-color: var(--text-secondary);
+}
+
+.sticky-title-bar--resume::after {
+    display: none;
+}
+
+.sticky-back-btn--resume {
+    color: var(--bg-primary);
+}
+
+.sticky-back-btn--resume:hover {
+    color: var(--bg-secondary);
+}
+
+.sticky-title-text--resume {
+    color: var(--bg-primary);
+}
+
+.sticky-download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-primary);
+    text-decoration: none;
+    padding: 2px;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+    margin-left: auto;
+}
+
+.sticky-download-btn:hover {
+    color: var(--bg-secondary);
 }
 
 .post-detail {
@@ -1074,7 +1112,7 @@ footer p {
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
     .sticky-title-bar {
-        top: 73px; /* Same as desktop - header height doesn't change on mobile */
+        top: 71px; /* Same as desktop */
     }
 
     .sticky-title-content {
@@ -1113,6 +1151,30 @@ footer p {
         transform: scale(0.95);
     }
 
+    /* Resume sticky bar mobile - inverted button styles */
+    .sticky-back-btn--resume {
+        background-color: transparent;
+        border: 1px solid var(--bg-secondary);
+    }
+
+    .sticky-back-btn--resume:active {
+        background-color: var(--bg-secondary);
+        opacity: 0.3;
+    }
+
+    .sticky-download-btn {
+        background-color: transparent;
+        border: 1px solid var(--bg-secondary);
+        border-radius: 4px;
+        padding: 4px;
+    }
+
+    .sticky-download-btn:active {
+        background-color: var(--bg-secondary);
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+
     .back-link {
         display: inline-flex;
         align-items: center;
@@ -1135,7 +1197,7 @@ footer p {
 
     .nav {
         position: fixed;
-        top: 49px;
+        top: 97px; /* Header at top: 24px padding + ~48px content + 24px padding + 1px border */
         left: 0;
         right: 0;
         background-color: var(--bg-primary);
@@ -1146,13 +1208,52 @@ footer p {
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* When header is scrolled/compact, nav moves up */
+    header.header--scrolled .nav {
+        top: 72px; /* Scrolled header */
     }
 
     .nav--open {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+    }
+
+    /* Mobile nav link animation - code bracket style */
+    .nav-link {
+        font-size: 18px;
+        padding: 8px 0;
+    }
+
+    .nav-link::before {
+        content: '{ ';
+        opacity: 0;
+        transform: translateX(-8px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        color: var(--accent);
+    }
+
+    .nav-link::after {
+        content: ' }';
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        opacity: 0;
+        transform: translateX(8px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        color: var(--accent);
+    }
+
+    .nav-link:hover::before,
+    .nav-link--active::before,
+    .nav-link:hover::after,
+    .nav-link--active::after {
+        opacity: 1;
+        transform: translateX(0);
     }
 
     .menu-btn {
@@ -1298,10 +1399,13 @@ html.theme-transitioning::before {
 
 /* Resume Header - Inverted */
 .resume-header-section {
+    position: relative;
+    top: auto;
     background: var(--text-primary);
     color: var(--bg-primary);
     padding: 20px 0;
     margin-bottom: 24px;
+    z-index: auto;
 }
 
 .resume-header-content {

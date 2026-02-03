@@ -1,12 +1,23 @@
+import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import SEO from './SEO';
 import Footer from './Footer';
 
-function DownloadIcon() {
+function DownloadIcon({ size = 16 }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
       <polyline points="7 10 12 15 17 10"/>
       <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+  );
+}
+
+function BackIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="19" y1="12" x2="5" y2="12"/>
+      <polyline points="12 19 5 12 12 5"/>
     </svg>
   );
 }
@@ -167,19 +178,51 @@ const resume = {
 };
 
 export default function Resume() {
+  const [showStickyTitle, setShowStickyTitle] = useState(false);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (titleRef.current) {
+        const titleRect = titleRef.current.getBoundingClientRect();
+        const header = document.querySelector('header');
+        const headerBottom = header ? header.getBoundingClientRect().bottom : 50;
+        // Show sticky bar when title top reaches the header bottom
+        setShowStickyTitle(titleRect.top <= headerBottom);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <SEO
         title="resume | david rector"
         description="Software Architect and Technical Leader with 14+ years architecting enterprise-scale .NET solutions in Azure cloud environments."
       />
+
+      {/* Sticky compact title bar - inverted colors */}
+      <div className={`sticky-title-bar sticky-title-bar--resume ${showStickyTitle ? 'sticky-title-bar--visible' : ''}`}>
+        <div className="sticky-title-content">
+          <Link to="/" className="sticky-back-btn sticky-back-btn--resume" aria-label="Back to home">
+            <BackIcon />
+          </Link>
+          <span className="sticky-title-text sticky-title-text--resume">david rector's resume</span>
+          <a href={resume.pdfUrl} download className="sticky-download-btn" aria-label="Download PDF">
+            <DownloadIcon size={16} />
+          </a>
+        </div>
+      </div>
+
       <div className="resume-page">
         {/* Header */}
         <header className="resume-header-section">
           <div className="container">
             <div className="resume-header-content">
               <div className="resume-header-main">
-                <h1 className="resume-name">{resume.fullName}</h1>
+                <h1 className="resume-name" ref={titleRef}>{resume.fullName}</h1>
                 <p className="resume-title">{resume.title}</p>
               </div>
               <div className="resume-contact-row">
