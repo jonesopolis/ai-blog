@@ -21,7 +21,7 @@ export default function ErrorPage({
               <span className="error-oops">oops</span>
             </div>
             <div className="error-robot">
-              <Robot emotion="sad" size={180} />
+              <Robot emotion="confused" size={180} />
             </div>
             <div className="error-text">
               <span className="error-code">{code}</span>
