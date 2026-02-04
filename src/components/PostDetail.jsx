@@ -156,6 +156,7 @@ export default function PostDetail() {
           )}
 
           <header className="post-detail-header">
+            {post.hook && <p className="post-hook">{post.hook}</p>}
             <h1 ref={titleRef}>{post.title}</h1>
             <div className="post-meta-row">
               <span className="post-date">{formatDate(post.publishDate)}</span>

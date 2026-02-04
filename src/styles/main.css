@@ -1361,7 +1361,8 @@ html.theme-transitioning .post-detail-header * {
     margin-bottom: 12px;
 }
 
-.draft-hook {
+.draft-hook,
+.post-hook {
     color: var(--text-secondary);
     font-size: 14px;
     margin-bottom: 8px;
