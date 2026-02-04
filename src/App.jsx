@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import PostList from './components/PostList';
 import PostDetail from './components/PostDetail';
+import DraftList from './components/DraftList';
+import DraftDetail from './components/DraftDetail';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import BitPage from './components/BitPage';
@@ -54,6 +56,8 @@ export default function App() {
           <Route path="/bit" element={<BitPage />} />
           <Route path="/bit/iterate" element={<BitIterate />} />
           <Route path="/iterate" element={<IteratePage />} />
+          <Route path="/drafts" element={<DraftList />} />
+          <Route path="/drafts/:slug" element={<DraftDetail />} />
           <Route path="/:slug" element={<PostDetail />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

@@ -125,7 +125,8 @@ export async function getHero() {
 
 export async function getPosts() {
   try {
-    const data = await fetchContentful('/entries?content_type=blogPost&order=-fields.publishDate&include=2');
+    // Only fetch published posts for the main site
+    const data = await fetchContentful('/entries?content_type=blogPost&fields.published=true&order=-fields.publishDate&include=2');
     if (data.items?.length > 0) {
       return resolveLinks(data.items, data.includes);
     }
@@ -136,9 +137,24 @@ export async function getPosts() {
   }
 }
 
+export async function getDraftPosts() {
+  try {
+    // Fetch unpublished posts (published != true catches false and undefined)
+    const data = await fetchContentful('/entries?content_type=blogPost&fields.published[ne]=true&order=-fields.publishDate&include=2');
+    if (data.items?.length > 0) {
+      return resolveLinks(data.items, data.includes);
+    }
+    return [];
+  } catch (error) {
+    console.error('Error fetching draft posts:', error);
+    return [];
+  }
+}
+
 export async function getPostBySlug(slug) {
   try {
-    const data = await fetchContentful(`/entries?content_type=blogPost&fields.slug=${slug}&include=2`);
+    // Only fetch published posts for the main site
+    const data = await fetchContentful(`/entries?content_type=blogPost&fields.slug=${slug}&fields.published=true&include=2`);
     if (data.items?.length > 0) {
       const resolved = resolveLinks(data.items, data.includes);
       return resolved[0];
@@ -147,6 +163,21 @@ export async function getPostBySlug(slug) {
   } catch (error) {
     console.error('Error fetching post:', error);
     return postsFallback.find((p) => p.slug === slug) || null;
+  }
+}
+
+export async function getDraftPostBySlug(slug) {
+  try {
+    // Fetch any post by slug (for draft preview - no published filter)
+    const data = await fetchContentful(`/entries?content_type=blogPost&fields.slug=${slug}&include=2`);
+    if (data.items?.length > 0) {
+      const resolved = resolveLinks(data.items, data.includes);
+      return resolved[0];
+    }
+    return null;
+  } catch (error) {
+    console.error('Error fetching draft post:', error);
+    return null;
   }
 }
 
@@ -206,9 +237,9 @@ export async function getContactPage() {
 
 export async function getRelatedPosts(currentSlug, tags, limit = 2) {
   try {
-    // Get posts that share tags with the current post
+    // Get published posts that share tags with the current post
     const tagSlugs = tags.map((t) => t.slug).join(',');
-    const data = await fetchContentful(`/entries?content_type=blogPost&fields.slug[ne]=${currentSlug}&include=2&limit=${limit + 5}`);
+    const data = await fetchContentful(`/entries?content_type=blogPost&fields.slug[ne]=${currentSlug}&fields.published=true&include=2&limit=${limit + 5}`);
 
     if (data.items?.length > 0) {
       const resolved = resolveLinks(data.items, data.includes);

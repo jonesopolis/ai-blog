@@ -1,14 +1,17 @@
 # Create Blog Post Skill
 
 ## Overview
-This skill guides the complete workflow for creating a new blog post from dictation to published content.
+This skill guides the complete workflow for creating a new blog post from dictation to published content. The focus is on preserving your authentic voice while organizing and polishing your thoughts.
 
 ## Workflow Steps
 
 ### Step 1: Dictation
-User dictates or provides raw ideas/content for the blog post.
+User dictates or provides raw ideas/content for the blog post - stream of consciousness style.
 
-**Claude's role**: Listen and capture all key points, examples, and ideas.
+**Claude's role**:
+- Listen and capture all key points, examples, and ideas
+- Don't interrupt the flow - let the user get everything out
+- Note tangents, asides, and random thoughts (often these become the best parts)
 
 ---
 
@@ -20,11 +23,14 @@ Transform raw dictation into a cohesive blog post structure.
 - Group related ideas together
 - Establish logical flow
 - Note any gaps that need filling
+- **CRITICAL: Preserve the user's voice and tone - don't corporate-speak it**
+
+**Output**: Present organized structure for user approval before editing
 
 ---
 
 ### Step 3: Content Editing
-Put on the content editor hat and formulate the post structure.
+Put on the content editor hat and polish the content.
 
 **Claude's role**:
 - Create compelling title
@@ -32,7 +38,8 @@ Put on the content editor hat and formulate the post structure.
 - Organize into clear sections with headings
 - Ensure smooth transitions
 - Write strong conclusion
-- Match the blog's voice/tone (developer-focused, learning journey)
+- **CRITICAL: Don't change the tone - keep the user's personality intact**
+- Match the blog's voice (developer-focused, learning journey, casual but informed)
 
 **Output format** (for user review):
 ```markdown
@@ -53,8 +60,15 @@ Put on the content editor hat and formulate the post structure.
 
 ---
 
-### Step 4: Create SVG Images
-Create both main image and thumbnail SVG for the post.
+### Step 4: Create Metadata & SVG
+Generate all required metadata and banner image for the post.
+
+**Required fields**:
+- `title` - Post title (compelling, descriptive)
+- `slug` - URL-friendly version (lowercase, hyphens, no special chars)
+- `hook` - Short hook for listings (max 100 chars)
+- `publishDate` - Date in YYYY-MM-DD format
+- `tags` - Relevant tags (use existing or create new)
 
 **SVG Requirements**:
 - Dimensions: 800x200 (banner format)
@@ -72,75 +86,57 @@ Create both main image and thumbnail SVG for the post.
 </svg>
 ```
 
-**Create two versions**:
-1. `[slug]-main.svg` - Main banner for post detail page
-2. `[slug]-thumb.svg` - Thumbnail for post cards (can be same or simplified)
-
 ---
 
-### Step 5: Create Metadata
-Generate all required metadata for the post.
-
-**Required fields**:
-- `title` - Post title (compelling, descriptive)
-- `slug` - URL-friendly version (lowercase, hyphens, no special chars)
-- `excerpt` - 1-2 sentence summary (max 300 chars) for post cards
-- `publishDate` - Date in YYYY-MM-DD format
-- `tags` - Relevant tags (use existing or create new)
-- `metaTitle` - SEO title (max 60 chars, include key terms)
-- `metaDescription` - SEO description (max 160 chars)
-
-**Existing tags** (check Contentful for current list):
-- AI, LLMs, Agents, Prompts, RAG, Embeddings, Fine-tuning, etc.
-
----
-
-### Step 6: Upload to Contentful (Draft)
-Upload everything to Contentful WITHOUT publishing.
+### Step 5: Upload to Contentful (Draft)
+Upload everything to Contentful as a draft.
 
 **Sequence**:
 
-1. **Upload Main Image Asset**
+1. **Upload SVG Asset**
 ```
 Tool: mcp__contentful__upload_asset
 - spaceId: "0p9g4pxrt6uv"
 - environmentId: "master"
-- title: "[Post Title] - Main Image"
+- title: "[Post Title] - Banner"
 - description: "Banner image for [topic]"
 - file: [SVG content or URL]
 ```
-→ Save the asset ID
+-> Save the asset ID
 
-2. **Upload Thumbnail Asset**
+2. **Publish Asset** (required before linking)
 ```
-Tool: mcp__contentful__upload_asset
+Tool: mcp__contentful__publish_asset
 - spaceId: "0p9g4pxrt6uv"
 - environmentId: "master"
-- title: "[Post Title] - Thumbnail"
-- description: "Thumbnail for [topic]"
-- file: [SVG content or URL]
+- assetId: [asset_id]
 ```
-→ Save the asset ID
 
-3. **Create Blog Post Entry (Draft)**
+3. **Create Blog Post Entry (Draft - published: false)**
 ```
 Tool: mcp__contentful__create_entry
 - spaceId: "0p9g4pxrt6uv"
 - environmentId: "master"
 - contentTypeId: "blogPost"
 - fields:
-  - title
-  - slug
-  - excerpt
-  - content (Rich Text format)
-  - publishDate
-  - tags (linked entries)
-  - mainImage (link to asset)
-  - thumbnailImage (link to asset)
-  - metaTitle
-  - metaDescription
+  - title: { "en-US": "[title]" }
+  - slug: { "en-US": "[slug]" }
+  - hook: { "en-US": "[hook]" }
+  - content: { "en-US": [Rich Text JSON] }
+  - publishDate: { "en-US": "[YYYY-MM-DD]" }
+  - tags: { "en-US": [linked tag entries] }
+  - imageSvg: { "en-US": { "sys": { "type": "Link", "linkType": "Asset", "id": "[asset_id]" } } }
+  - published: { "en-US": false }
 ```
-→ Save the entry ID
+-> Save the entry ID
+
+4. **Publish Entry** (makes it queryable, but `published: false` keeps it as draft)
+```
+Tool: mcp__contentful__publish_entry
+- spaceId: "0p9g4pxrt6uv"
+- environmentId: "master"
+- entryId: [entry_id]
+```
 
 **Rich Text Format** for content field:
 ```json
@@ -178,21 +174,18 @@ Tool: mcp__contentful__create_entry
 
 ---
 
-### Step 7: Verify (Preview)
-Review the draft content in Contentful's web interface.
+### Step 6: Preview Draft
+Review the draft content on the live site.
 
 **Provide user with**:
 ```
-📝 Draft Blog Post Created!
+Draft Created!
 
-Review your post here:
+Preview your post here:
+https://code.blog-ai.local:5173/drafts/[slug]
+
+Contentful entry:
 https://app.contentful.com/spaces/0p9g4pxrt6uv/entries/[ENTRY_ID]
-
-Main Image:
-https://app.contentful.com/spaces/0p9g4pxrt6uv/assets/[MAIN_ASSET_ID]
-
-Thumbnail:
-https://app.contentful.com/spaces/0p9g4pxrt6uv/assets/[THUMB_ASSET_ID]
 
 Let me know what changes you'd like, or say "publish" when ready!
 ```
@@ -204,28 +197,22 @@ Let me know what changes you'd like, or say "publish" when ready!
 
 ---
 
-### Step 8: Publish
-Once user approves, publish everything in order.
+### Step 7: Publish
+Once user approves, flip the published flag.
 
-**Sequence** (order matters!):
+**Sequence**:
 
-1. **Publish Main Image Asset**
+1. **Update Entry to Published**
 ```
-Tool: mcp__contentful__publish_asset
+Tool: mcp__contentful__update_entry
 - spaceId: "0p9g4pxrt6uv"
 - environmentId: "master"
-- assetId: [main_asset_id]
+- entryId: [entry_id]
+- fields:
+  - published: { "en-US": true }
 ```
 
-2. **Publish Thumbnail Asset**
-```
-Tool: mcp__contentful__publish_asset
-- spaceId: "0p9g4pxrt6uv"
-- environmentId: "master"
-- assetId: [thumb_asset_id]
-```
-
-3. **Publish Blog Post Entry**
+2. **Re-publish Entry** (to make the change live)
 ```
 Tool: mcp__contentful__publish_entry
 - spaceId: "0p9g4pxrt6uv"
@@ -233,13 +220,14 @@ Tool: mcp__contentful__publish_entry
 - entryId: [entry_id]
 ```
 
-4. **Confirm to User**
+3. **Confirm to User**
 ```
-✅ Blog post published!
+Blog post published!
 
-Contentful entry: https://app.contentful.com/spaces/0p9g4pxrt6uv/entries/[entry_id]
+Live post: https://code.blog-ai.local:5173/[slug]
+Contentful: https://app.contentful.com/spaces/0p9g4pxrt6uv/entries/[entry_id]
 
-Note: Push to GitHub to trigger deployment to GitHub Pages.
+The post is now visible on the main site.
 ```
 
 ---
@@ -250,6 +238,19 @@ Note: Push to GitHub to trigger deployment to GitHub Pages.
 - Space ID: `0p9g4pxrt6uv`
 - Environment: `master`
 - Content Type: `blogPost`
+
+### blogPost Fields
+| Field | Type | Notes |
+|-------|------|-------|
+| title | Symbol | Required |
+| slug | Symbol | Required, unique |
+| hook | Symbol | Max 100 chars |
+| content | RichText | Post body |
+| publishDate | Date | YYYY-MM-DD |
+| tags | Array[Link] | Linked tag entries |
+| image | Link[Asset] | Raster image (OG/social) |
+| imageSvg | Link[Asset] | SVG banner (theme-aware) |
+| published | Boolean | false = draft, true = live |
 
 ### Asset Linking Format
 ```json
@@ -281,13 +282,14 @@ Always use `#000000` - never `currentColor` or other colors. The CSS mask-image 
 ## Checklist
 
 - [ ] Dictation captured
-- [ ] Ideas structured into cohesive flow
-- [ ] Content edited with proper headings/sections
-- [ ] Main SVG created (800x200, circles/lines, #000000)
-- [ ] Thumbnail SVG created (800x200, circles/lines, #000000)
-- [ ] Metadata complete (title, slug, excerpt, tags, SEO)
-- [ ] Assets uploaded to Contentful (draft)
-- [ ] Entry created in Contentful (draft)
-- [ ] User reviewed and approved
-- [ ] Assets published
-- [ ] Entry published
+- [ ] Ideas structured (preserving voice!)
+- [ ] Content edited (coherent but authentic)
+- [ ] SVG created (800x200, circles/lines, #000000)
+- [ ] Metadata complete (title, slug, hook, tags, date)
+- [ ] Asset uploaded and published
+- [ ] Entry created with `published: false`
+- [ ] User previewed at /drafts/[slug]
+- [ ] User approved
+- [ ] Entry updated to `published: true`
+- [ ] Entry re-published
+- [ ] Post live at /[slug]
