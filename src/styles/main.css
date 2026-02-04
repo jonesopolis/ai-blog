@@ -594,15 +594,13 @@ header.header--scrolled {
 }
 
 .post-detail-icon {
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    margin-bottom: 24px;
+    width: 100%;
 }
 
 .post-detail-icon svg {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: auto;
     color: var(--text-secondary);
     transition: color 0.3s ease;
 }
