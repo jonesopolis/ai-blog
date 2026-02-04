@@ -612,25 +612,17 @@ header.header--scrolled {
 
 .post-detail-image {
     margin-bottom: 32px;
-    border: 1px solid var(--border);
     overflow: hidden;
-    background-color: var(--bg-secondary);
-    padding: 40px;
 }
 
 .post-main-image {
     width: 100%;
-    height: 200px;
-    background-color: var(--text-secondary);
-    -webkit-mask-image: var(--main-image-url);
-    mask-image: var(--main-image-url);
-    -webkit-mask-size: cover;
-    mask-size: cover;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    transition: background-color 0.3s ease;
+    height: auto;
+    background-image: var(--main-image-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    aspect-ratio: 16 / 9;
 }
 
 .post-detail-header {
