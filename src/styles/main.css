@@ -1027,124 +1027,235 @@ html.theme-transitioning .post-detail-header * {
     flex-wrap: wrap;
 }
 
-/* V1: Minimal - no border tags */
+/* ========== DOT PREFIX VARIATIONS ========== */
+
+/* V1: Dot prefix - basic hover color */
 .iterate-header-v1 .tag {
     font-size: 11px;
     color: var(--text-secondary);
     text-transform: lowercase;
-    letter-spacing: 0.5px;
+    font-family: 'Fira Code', monospace;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-/* V2: Hashtag style */
+.iterate-header-v1 .tag:hover {
+    color: var(--accent);
+}
+
+/* V2: Dot prefix - underline slide */
 .iterate-header-v2 .tag {
     font-size: 11px;
-    color: var(--accent);
+    color: var(--text-secondary);
     text-transform: lowercase;
-    letter-spacing: 0.3px;
+    font-family: 'Fira Code', monospace;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
 }
 
-/* V3: Slash separated */
-.iterate-header-v3 .tags {
-    gap: 0;
+.iterate-header-v2 .tag::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
 }
 
+.iterate-header-v2 .tag:hover {
+    color: var(--accent);
+}
+
+.iterate-header-v2 .tag:hover::after {
+    width: 100%;
+}
+
+/* V3: Dot prefix - dot pulses on hover */
 .iterate-header-v3 .tag {
     font-size: 11px;
     color: var(--text-secondary);
     text-transform: lowercase;
+    font-family: 'Fira Code', monospace;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-.iterate-header-v3 .sep {
-    margin: 0 6px;
-    color: var(--border);
+.iterate-header-v3 .tag .dot {
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
-/* V4: Dot prefix */
+.iterate-header-v3 .tag:hover {
+    color: var(--accent);
+}
+
+.iterate-header-v3 .tag:hover .dot {
+    animation: dotPulse 0.6s ease infinite;
+    color: var(--accent);
+}
+
+@keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.7; }
+}
+
+/* V4: Dot prefix - brackets reveal */
 .iterate-header-v4 .tag {
     font-size: 11px;
-    color: var(--accent);
+    color: var(--text-secondary);
     text-transform: lowercase;
     font-family: 'Fira Code', monospace;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease, padding 0.2s ease;
 }
 
-/* V5: Bracket tags */
+.iterate-header-v4 .tag::before {
+    content: '[';
+    position: absolute;
+    left: -8px;
+    opacity: 0;
+    transform: translateX(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    color: var(--accent);
+}
+
+.iterate-header-v4 .tag::after {
+    content: ']';
+    position: absolute;
+    right: -8px;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    color: var(--accent);
+}
+
+.iterate-header-v4 .tag:hover {
+    color: var(--accent);
+}
+
+.iterate-header-v4 .tag:hover::before,
+.iterate-header-v4 .tag:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* V5: Dot prefix - letter spacing */
 .iterate-header-v5 .tag {
     font-size: 11px;
     color: var(--text-secondary);
     text-transform: lowercase;
     font-family: 'Fira Code', monospace;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: color 0.2s ease, letter-spacing 0.3s ease;
 }
 
-/* V6: Pipe with mid-dots */
-.iterate-header-v6 .meta-row {
-    justify-content: flex-start;
-}
-
-.iterate-header-v6 .pipe {
-    color: var(--border);
-    margin: 0 8px;
-}
-
-.iterate-header-v6 .tags {
-    gap: 0;
-}
-
-.iterate-header-v6 .tag {
-    font-size: 11px;
-    color: var(--text-secondary);
-    text-transform: lowercase;
-}
-
-.iterate-header-v6 .dot {
-    margin: 0 8px;
-    color: var(--border);
-}
-
-/* V7: Terminal style */
-.iterate-header-v7 .tags {
-    gap: 4px;
-}
-
-.iterate-header-v7 .tag-prefix {
-    font-size: 11px;
+.iterate-header-v5 .tag:hover {
     color: var(--accent);
-    font-family: 'Fira Code', monospace;
-    margin-right: 4px;
+    letter-spacing: 2px;
 }
 
-.iterate-header-v7 .tag {
-    font-size: 11px;
-    color: var(--text-secondary);
-    text-transform: lowercase;
-    font-family: 'Fira Code', monospace;
-}
+/* ========== PILL VARIATIONS ========== */
 
-/* V8: Angle brackets */
-.iterate-header-v8 .tag {
-    font-size: 11px;
-    color: var(--text-secondary);
-    text-transform: lowercase;
-    font-family: 'Fira Code', monospace;
-}
-
-/* V9: Accent pills */
-.iterate-header-v9 .tag {
+/* V6: Ghost pill - subtle bg */
+.iterate-header-v6 .tag {
     font-size: 10px;
     padding: 4px 10px;
-    background: var(--accent);
-    color: var(--bg-primary);
+    background: var(--accent-subtle);
+    color: var(--text-secondary);
     text-transform: lowercase;
     letter-spacing: 0.5px;
     border-radius: 12px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
-/* V10: Underscore prefix */
-.iterate-header-v10 .tag {
-    font-size: 11px;
+.iterate-header-v6 .tag:hover {
+    background: rgba(128, 128, 128, 0.15);
     color: var(--accent);
+}
+
+/* V7: Outline pill - fill on hover */
+.iterate-header-v7 .tag {
+    font-size: 10px;
+    padding: 4px 10px;
+    background: transparent;
+    color: var(--text-secondary);
     text-transform: lowercase;
-    font-family: 'Fira Code', monospace;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.iterate-header-v7 .tag:hover {
+    background: var(--accent-subtle);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* V8: Pill - glow on hover */
+.iterate-header-v8 .tag {
+    font-size: 10px;
+    padding: 4px 10px;
+    background: var(--accent-subtle);
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.iterate-header-v8 .tag:hover {
+    color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-subtle), 0 0 4px var(--accent-subtle);
+}
+
+/* V9: Pill - lift on hover */
+.iterate-header-v9 .tag {
+    font-size: 10px;
+    padding: 4px 10px;
+    background: var(--accent-subtle);
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.iterate-header-v9 .tag:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* V10: Pill - scale on hover */
+.iterate-header-v10 .tag {
+    font-size: 10px;
+    padding: 4px 10px;
+    background: var(--accent-subtle);
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.iterate-header-v10 .tag:hover {
+    color: var(--accent);
+    transform: scale(1.08);
 }
 
 /* ==================== FOOTER ==================== */
