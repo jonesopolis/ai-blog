@@ -990,6 +990,163 @@ html.theme-transitioning .post-detail-header * {
     margin-left: 4px;
 }
 
+/* ==================== ITERATE PAGE - POST HEADER VARIATIONS ==================== */
+
+/* Base styles for all iterate header variations */
+[class^="iterate-header-v"] {
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+[class^="iterate-header-v"] h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-transform: lowercase;
+    color: var(--text-primary);
+}
+
+[class^="iterate-header-v"] .meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+[class^="iterate-header-v"] .date {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+[class^="iterate-header-v"] .tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* V1: Minimal - no border tags */
+.iterate-header-v1 .tag {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+}
+
+/* V2: Hashtag style */
+.iterate-header-v2 .tag {
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: lowercase;
+    letter-spacing: 0.3px;
+}
+
+/* V3: Slash separated */
+.iterate-header-v3 .tags {
+    gap: 0;
+}
+
+.iterate-header-v3 .tag {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: lowercase;
+}
+
+.iterate-header-v3 .sep {
+    margin: 0 6px;
+    color: var(--border);
+}
+
+/* V4: Dot prefix */
+.iterate-header-v4 .tag {
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: lowercase;
+    font-family: 'Fira Code', monospace;
+}
+
+/* V5: Bracket tags */
+.iterate-header-v5 .tag {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    font-family: 'Fira Code', monospace;
+}
+
+/* V6: Pipe with mid-dots */
+.iterate-header-v6 .meta-row {
+    justify-content: flex-start;
+}
+
+.iterate-header-v6 .pipe {
+    color: var(--border);
+    margin: 0 8px;
+}
+
+.iterate-header-v6 .tags {
+    gap: 0;
+}
+
+.iterate-header-v6 .tag {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: lowercase;
+}
+
+.iterate-header-v6 .dot {
+    margin: 0 8px;
+    color: var(--border);
+}
+
+/* V7: Terminal style */
+.iterate-header-v7 .tags {
+    gap: 4px;
+}
+
+.iterate-header-v7 .tag-prefix {
+    font-size: 11px;
+    color: var(--accent);
+    font-family: 'Fira Code', monospace;
+    margin-right: 4px;
+}
+
+.iterate-header-v7 .tag {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    font-family: 'Fira Code', monospace;
+}
+
+/* V8: Angle brackets */
+.iterate-header-v8 .tag {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    font-family: 'Fira Code', monospace;
+}
+
+/* V9: Accent pills */
+.iterate-header-v9 .tag {
+    font-size: 10px;
+    padding: 4px 10px;
+    background: var(--accent);
+    color: var(--bg-primary);
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+}
+
+/* V10: Underscore prefix */
+.iterate-header-v10 .tag {
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: lowercase;
+    font-family: 'Fira Code', monospace;
+    letter-spacing: 0.3px;
+}
+
 /* ==================== FOOTER ==================== */
 footer {
     margin-top: 40px;
