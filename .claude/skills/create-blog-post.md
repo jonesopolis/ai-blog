@@ -60,15 +60,53 @@ Put on the content editor hat and polish the content.
 
 ---
 
-### Step 4: Create Metadata & SVG
-Generate all required metadata and banner image for the post.
+### Step 4: Finalize Metadata (CHECKPOINT)
+**⚠️ HARD STOP - Get explicit user approval before proceeding.**
 
-**Required fields**:
-- `title` - Post title (compelling, descriptive)
-- `slug` - URL-friendly version (lowercase, hyphens, no special chars)
-- `hook` - Short hook for listings (max 100 chars)
-- `publishDate` - Date in YYYY-MM-DD format
-- `tags` - Relevant tags (use existing or create new)
+This is a checkpoint. Nothing goes to Contentful until these are locked in.
+
+**Present to user for approval:**
+
+1. **Title** (exact, final)
+   - Display the proposed title
+   - This becomes the H1 and appears in listings
+
+2. **Hook** (exact, final, max 100 chars)
+   - Display the proposed hook with character count
+   - This appears in post cards and SEO description
+
+3. **Tags** (select from existing or explicitly agree to create new)
+   - List existing tags available
+   - Propose which tags apply
+   - If suggesting a new tag, call it out explicitly
+
+4. **Publish Date** (YYYY-MM-DD)
+   - Confirm the date (can be backdated for "fluff")
+   - This affects post ordering on the site
+
+**Output format:**
+```
+Ready to finalize metadata:
+
+📌 TITLE: "[exact title here]"
+
+📌 HOOK: "[exact hook here]" (XX/100 chars)
+
+📌 TAGS: [tag1], [tag2]
+   (existing tags: [list available])
+   (new tags to create: [if any])
+
+📌 DATE: YYYY-MM-DD
+
+Please confirm all four are correct, or let me know what to change.
+```
+
+**Do not proceed until user explicitly approves all four.**
+
+---
+
+### Step 5: Create SVG Banner
+Generate the banner image for the post.
 
 **SVG Requirements**:
 - Dimensions: 800x200 (banner format)
@@ -88,7 +126,7 @@ Generate all required metadata and banner image for the post.
 
 ---
 
-### Step 5: Convert SVG to PNG
+### Step 6: Convert SVG to PNG
 Convert the SVG banner to PNG format for OG/social sharing (meta tags, Twitter cards, etc.).
 
 **Why PNG?**
@@ -121,7 +159,7 @@ curl -F "reqtype=fileupload" -F "fileToUpload=@[slug].png" https://catbox.moe/us
 
 ---
 
-### Step 6: Upload to Contentful (Unpublished)
+### Step 7: Upload to Contentful (Unpublished)
 Upload everything to Contentful as unpublished.
 
 **Sequence**:
@@ -219,7 +257,7 @@ Tool: mcp__contentful__publish_entry
 
 ---
 
-### Step 7: Preview Unpublished Post
+### Step 8: Preview Unpublished Post
 Review the unpublished content on the live site.
 
 **Provide user with**:
@@ -242,7 +280,7 @@ Let me know what changes you'd like, or say "publish" when ready!
 
 ---
 
-### Step 8: Publish
+### Step 9: Publish
 Once user approves, flip the published flag.
 
 **Sequence**:
@@ -329,8 +367,12 @@ Always use `#000000` - never `currentColor` or other colors. The CSS mask-image 
 - [ ] Dictation captured
 - [ ] Ideas structured (preserving voice!)
 - [ ] Content edited (coherent but authentic)
+- [ ] **CHECKPOINT: Metadata finalized and approved**
+  - [ ] Title locked
+  - [ ] Hook locked (100 chars max)
+  - [ ] Tags confirmed (existing or new)
+  - [ ] Date confirmed (can backdate)
 - [ ] SVG created (800x200, circles/lines, #000000)
-- [ ] Metadata complete (title, slug, hook, tags, date)
 - [ ] SVG converted to PNG (800x200, white background)
 - [ ] PNG uploaded to temporary hosting (catbox.moe)
 - [ ] SVG asset uploaded and published
